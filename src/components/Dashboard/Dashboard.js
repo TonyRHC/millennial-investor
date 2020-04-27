@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Futures from '../Futures/Futures';
+import Stocks from '../Stocks/Stocks';
 
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import axios from 'axios';
 
 const Dashboard = () => {
+    const [spyFutures, setSpyFutures] = useState({
+        value: 'Loading'
+    })
+
+    useEffect(() => {
+        // Axios call to fetch futures data
+    })
+
     return (
         <div>
             <Container>
@@ -13,7 +23,7 @@ const Dashboard = () => {
                     <Futures />
                 </Grid>
                 <Grid item xs={6}>
-
+                    <Stocks/ >
                 </Grid>
                 <Grid item xs={6}>
 
