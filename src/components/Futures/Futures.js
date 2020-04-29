@@ -1,8 +1,13 @@
 import React from 'react';
 
-const Futures = () => {
+const Futures = (props) => {
+    let futures = null;
+    if (props.futures !== null) {
+        futures = props.futures.map( e => <li key={e.symbol}>{e.symbol}</li> )
+    }
+
     return (
-        <h1>My Futures</h1>
+    <ul>{futures}</ul>
     )
 }
 

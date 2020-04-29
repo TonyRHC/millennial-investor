@@ -7,20 +7,26 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 
 const Dashboard = () => {
-    const [spyFutures, setSpyFutures] = useState({
-        value: 'Loading'
-    })
+    const [loading, setLoading] = useState(false)
+    const [futures, setFutures] = useState(null)
 
     useEffect(() => {
-        // Axios call to fetch futures data
-    })
+        fetchFutures();
+    }, [loading])
+
+    const fetchFutures = () => {
+        axios.get(process.env.REACT_APP_API_URL + 'futures/').then( (response) => {
+            console.log(response);
+            setFutures(response.data)
+        } )
+    }
 
     return (
         <div>
             <Container>
                 <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <Futures />
+                    <Futures futures={futures} />
                 </Grid>
                 <Grid item xs={6}>
                     <Stocks/ >
