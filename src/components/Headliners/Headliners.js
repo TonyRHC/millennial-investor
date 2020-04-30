@@ -9,16 +9,16 @@ const useStyles = makeStyles({
     },
 });
 
-const Stocks = () => {
+const Headliners = () => {
     const classes = useStyles();
 
     return(
         <div>
             <Typography variant="h2" gutterBottom className={classes.title}>
-                Stocks
+                Headliners
             </Typography>
         </div>
     )
 }
 
-export default Stocks;
+export default Headliners;
