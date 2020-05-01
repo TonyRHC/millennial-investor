@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -6,8 +6,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress'
-
-import axios from 'axios';
 
 const useStyles = makeStyles({
     card: {
@@ -38,24 +36,12 @@ const ColorLinearProgress = withStyles({
 })(LinearProgress);
   
 
-const Futures = () => {
+const Futures = (props) => {
     const classes = useStyles();
-    const [futures, setFutures] = useState(null)
-    const loading = false;
-
-    useEffect(() => {
-        fetchFutures();
-    }, [loading])
-  
-    const fetchFutures = () => {
-        axios.get(process.env.REACT_APP_API_URL + 'futures/').then( (response) => {
-            setFutures(response.data)
-        });
-    }
 
     let futuresDisplay = <ColorLinearProgress variant="query" />
-    if (futures !== null) {
-        const topFutures = futures.slice()
+    if (props.futures !== null) {
+        const topFutures = props.futures.slice()
         futuresDisplay = 
             <Grid container spacing={3}>
                 {topFutures.map( e => 

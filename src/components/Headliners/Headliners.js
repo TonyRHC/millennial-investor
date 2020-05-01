@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -7,8 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
-
-import axios from 'axios';
 
 const useStyles = makeStyles({
     card: {
@@ -42,26 +40,12 @@ const ColorLinearProgress = withStyles({
     },
 })(LinearProgress);
 
-const Headliners = () => {
+const Headliners = (props) => {
     const classes = useStyles();
-    const [headliners, setHeadliners] = useState(null)
-
-    const loading = false;
-
-    useEffect(() => {
-        fetchHeadliners();
-    }, [loading])
-  
-    const fetchHeadliners = () => {
-        axios.get(process.env.REACT_APP_API_URL + 'headliners/').then( (response) => {
-            setHeadliners(response.data);
-            console.log(response.data);
-        });
-    }
 
     let headlinersDisplay = <ColorLinearProgress variant="query"/>
-    if (headliners != null) {
-        const news = headliners.slice();
+    if (props.headliners != null) {
+        const news = props.headliners.slice();
         headlinersDisplay =
             <Grid container spacing={3}>
                 { news.map( e => e.values.slice(0, 20).map( v => 
