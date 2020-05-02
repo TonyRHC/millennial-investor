@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     marginTop: '40px'
-  }
+  },
 }));
 
 const App = () => {
@@ -42,17 +42,29 @@ const App = () => {
         setHeadliners(response.data);
         console.log(response.data)
     });
-}
+  }
+
+  const handleHeadlinersSubmit = (keyword) => {
+    axios.post(process.env.REACT_APP_API_URL + 'headliners/', {
+      'keyword' : keyword
+    })
+    .then((response) => {
+      console.log(response);
+      setHeadliners(response.data);
+    })
+  }
 
   return (
-    <HashRouter className={classes.root}>
-      <Navbar/>
-      <Container className={classes.content}>
-        <Route exact path='/' render={ () => <Headliners headliners={headliners} /> } />
-        <Route path='/Stocks' render={ () => <Stocks/> } />
-        <Route path='/Futures' render={ () => <Futures futures={futures} /> } />
-      </Container>
-    </HashRouter>
+    <div>
+      <HashRouter className={classes.root}>
+        <Navbar/>
+            <Container className={classes.content}>
+              <Route exact path='/' render={ () => <Headliners headliners={headliners} handleHeadlinersSubmit={handleHeadlinersSubmit} /> } />
+              <Route path='/Stocks' render={ () => <Stocks/> } />
+              <Route path='/Futures' render={ () => <Futures futures={futures} /> } />
+            </Container>
+      </HashRouter>
+    </div>
   );
 }
 

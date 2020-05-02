@@ -57,7 +57,7 @@ export default function Navbar() {
           aria-label="simple tabs example" 
           className={classes.tab}
         >
-          <Tab label="Headlines" />
+          <Tab label="Headliners" />
           <Tab label="Stocks" />
           <Tab label="Futures" />
         </ColorTabs>

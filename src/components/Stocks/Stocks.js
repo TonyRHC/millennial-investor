@@ -17,6 +17,9 @@ const Stocks = () => {
             <Typography variant="h2" gutterBottom className={classes.title}>
                 Stocks
             </Typography>
+            <Typography variant="h5" gutterBottom className={classes.title}>
+                Coming soon...
+            </Typography>
         </div>
     )
 }

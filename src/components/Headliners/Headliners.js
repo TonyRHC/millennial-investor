@@ -1,4 +1,5 @@
 import React from 'react';
+import HeadlinersModal from '../Modals/HeadlinersModal'
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -18,16 +19,9 @@ const useStyles = makeStyles({
         color: '#ffffff'
     },
     pubdate: {
-        position: 'absolute',
-        bottom: 0,
-        marginBottom: 10,
     },
     keyword: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        marginRight: 10,
-        marginBottom: 10,
+        float: 'right',
     },
 });
 
@@ -43,12 +37,12 @@ const ColorLinearProgress = withStyles({
 const Headliners = (props) => {
     const classes = useStyles();
 
-    let headlinersDisplay = <ColorLinearProgress variant="query"/>
+    let headlinersDisplay = <ColorLinearProgress variant="query" />
     if (props.headliners != null) {
         const news = props.headliners.slice();
         headlinersDisplay =
             <Grid container spacing={3}>
-                { news.map( e => e.values.slice(0, 20).map( v => 
+                { news.map( e => e.values.slice(0, 3).map( v => 
                         <Grid item xs={6} key={v.title} >
                             <CardActionArea>
                                 <a href={v.link}>
@@ -80,9 +74,12 @@ const Headliners = (props) => {
 
     return(
         <div>
-            <Typography variant="h2" gutterBottom className={classes.typography}>
-                Headliners
-            </Typography>
+            <div>
+                <Typography variant="h2" gutterBottom className={classes.typography}>
+                    Headliners
+                </Typography>
+                <HeadlinersModal handleSubmit={props.handleHeadlinersSubmit} />
+            </div>
             {headlinersDisplay}
         </div>
     )
