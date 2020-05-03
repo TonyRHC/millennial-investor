@@ -20,10 +20,10 @@ const useStyles = makeStyles({
         flexDirection: 'row',
     },
     changeGain: {
-        color: '#469a76',
+        color: '#52ba8d',
     },
     changeLoss: {
-        color: '#a43e24',
+        color: '#cc4827',
     },
 });
 
