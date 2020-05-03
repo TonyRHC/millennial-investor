@@ -77,7 +77,7 @@ const Stocks = (props) => {
                 <Grid container spacing={4}>
                     {stockData.map( e => 
                         show[e.pk] ?
-                            <Grid item xs={4} key={e.pk} >
+                            <Grid item xs={12} sm={6} lg={3} key={e.pk} >
                                 <Card className={classes.card}>
                                     <CardContent>
                                         <div>

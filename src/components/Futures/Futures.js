@@ -49,7 +49,7 @@ const Futures = (props) => {
                 </Typography>
                 <Grid container spacing={4}>
                     {topFutures.map( e => 
-                        <Grid item xs={4} key={e.symbol} >
+                        <Grid item xs={12} sm={6} lg={3} key={e.symbol} >
                             <Card className={classes.card}>
                                 <CardContent>
                                     <div className={classes.sameRow}>

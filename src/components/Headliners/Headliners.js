@@ -49,8 +49,8 @@ const Headliners = (props) => {
                 <HeadlinersModal handleSubmit={props.handleHeadlinersSubmit} />
                 <Grid container spacing={4}>
                     { news.map( e => e.values.slice(0, 3).map( v => 
-                            <Grid item xs={6} key={v.title} >
-                                <a href={v.link}>
+                            <Grid item xs={12} sm={6} lg={4} key={v.title} >
+                                <a target="_blank" rel="noopener noreferrer" href={v.link}>
                                     <CardActionArea>
                                         <Card className={classes.card}>
                                             <CardContent>
