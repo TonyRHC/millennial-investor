@@ -13,8 +13,9 @@ import DeleteIcon from '@material-ui/icons/Delete'
 const useStyles = makeStyles({
     card: {
         minHeight: 150,
+        backgroundColor: '#262629',
     },
-    title: {
+    typography: {
         color: '#ffffff',
     },
     sameRow: {
@@ -70,25 +71,25 @@ const Stocks = (props) => {
         const stockData = props.stocks.slice();
         stocksDisplay = 
             <div>
-                <Typography variant="h2" gutterBottom className={classes.title}>
+                <Typography variant="h2" gutterBottom className={classes.typography}>
                     Stocks
                 </Typography>
                 <StocksModal handleSubmit={props.handleStocksAddSubmit} />
                 <Grid container spacing={4}>
                     {stockData.map( e => 
                         show[e.pk] ?
-                            <Grid item xs={12} sm={6} lg={3} key={e.pk} >
+                            <Grid item xs={6} md={4} lg={3} key={e.pk} >
                                 <Card className={classes.card}>
                                     <CardContent>
                                         <div>
-                                            <Typography variant="h5">
+                                            <Typography variant="h5" className={classes.typography}>
                                                 {e.data.symbol}
                                             </Typography>
                                             <IconButton className={classes.button} onClick={() => handleDelete(e.pk)} >
-                                                <DeleteIcon/>
+                                                <DeleteIcon style={{fill: "white"}}/>
                                             </IconButton>
                                         </div>
-                                        <Typography variant="h4" >
+                                        <Typography variant="h4" className={classes.typography}>
                                                 {e.data.price}
                                         </Typography>
                                         <Typography variant="button" className={e.data.change.charAt(0) === '+' ? classes.changeGain : classes.changeLoss}>

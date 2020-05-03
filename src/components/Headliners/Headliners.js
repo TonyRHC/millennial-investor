@@ -13,7 +13,6 @@ const useStyles = makeStyles({
     card: {
         minHeight: 120,
         backgroundColor: '#262629',
-        position: 'relative',
     },
     typography: {
         color: '#ffffff'

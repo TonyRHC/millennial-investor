@@ -10,8 +10,9 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 const useStyles = makeStyles({
     card: {
         minHeight: 150,
+        backgroundColor: '#262629',
     },
-    title: {
+    typography: {
         color: '#ffffff',
     },
     sameRow: {
@@ -44,7 +45,7 @@ const Futures = (props) => {
         const topFutures = props.futures.slice();
         futuresDisplay = 
             <div>
-                <Typography variant="h2" gutterBottom className={classes.title}>
+                <Typography variant="h2" gutterBottom className={classes.typography}>
                     Futures
                 </Typography>
                 <Grid container spacing={4}>
@@ -53,12 +54,12 @@ const Futures = (props) => {
                             <Card className={classes.card}>
                                 <CardContent>
                                     <div className={classes.sameRow}>
-                                        <Typography variant="subtitle2">
+                                        <Typography variant="subtitle2" className={classes.typography}>
                                             {e.name} {" "} ({e.symbol})
                                         </Typography>
                                     </div>
                                     <div>
-                                        <Typography variant="h4" >
+                                        <Typography variant="h4" className={classes.typography}>
                                                 {parseFloat(e.price.replace(/,/g, '')).toFixed(2)}
                                         </Typography>
                                         <Typography variant="button" className={e.change.charAt(0) === '+' ? classes.changeGain : classes.changeLoss}>

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router'
+import { useLocation } from 'react-router-dom'
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -23,9 +24,23 @@ const ColorTabs = withStyles({
 })(Tabs);
 
 export default function Navbar() {
+  const location = useLocation().pathname;
+  let currentLocation = null;
+  switch(location) {
+    case "/Stocks":
+      currentLocation = 1;
+      console.log(location);
+      break;
+    case "/Futures":
+      currentLocation = 2;
+      break;
+    default:
+      currentLocation = 0;
+  }
+
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const [page, setPage] = React.useState(null)
+  const [value, setValue] = useState(currentLocation);
+  const [page, setPage] = useState(null)
 
   const handleChange = (event, newValue) => {
     let redirect = null;
