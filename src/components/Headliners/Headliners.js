@@ -25,6 +25,7 @@ const useStyles = makeStyles({
     },
 });
 
+
 const ColorLinearProgress = withStyles({
     colorPrimary: {
         backgroundColor: '#ffffff',
@@ -46,11 +47,11 @@ const Headliners = (props) => {
                     Headliners
                 </Typography>
                 <HeadlinersModal handleSubmit={props.handleHeadlinersSubmit} />
-                <Grid container spacing={6}>
+                <Grid container spacing={4}>
                     { news.map( e => e.values.slice(0, 3).map( v => 
-                            <Grid item xs={3} key={v.title} >
-                                <CardActionArea>
-                                    <a href={v.link}>
+                            <Grid item xs={6} key={v.title} >
+                                <a href={v.link}>
+                                    <CardActionArea>
                                         <Card className={classes.card}>
                                             <CardContent>
                                                 <Typography variant="subtitle1" className={classes.typography}>
@@ -68,8 +69,8 @@ const Headliners = (props) => {
                                                 </div>
                                             </CardContent>
                                         </Card>
-                                    </a>
-                                </CardActionArea>
+                                    </CardActionArea>
+                                </a>
                             </Grid>
                             )
                         )

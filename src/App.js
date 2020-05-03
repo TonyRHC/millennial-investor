@@ -5,7 +5,7 @@ import Futures from './components/Futures/Futures';
 import Stocks from './components/Stocks/Stocks';
 import Headliners from './components/Headliners/Headliners';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import { Route, HashRouter } from "react-router-dom";
@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
   },
 }));
+
+let theme = createMuiTheme();
+theme = responsiveFontSizes(theme);
 
 const ColorCircularProgress = withStyles({
   root: {
@@ -94,23 +97,25 @@ const App = () => {
   return (
     headliners !== null && stocks !== null && futures !== null ?
       <div>
-        <HashRouter className={classes.root}>
-          <Navbar/>
-              <Container className={classes.content}>
-                <Route exact path='/' render={ () => <Headliners 
-                                                        headliners={headliners} 
-                                                        handleHeadlinersSubmit={handleHeadlinersSubmit} 
-                                                      /> } />
-                <Route path='/Stocks' render={ () => <Stocks 
-                                                        stocks={stocks}  
-                                                        handleStocksAddSubmit={handleStocksAddSubmit} 
-                                                        handleStocksDeleteSubmit={handleStocksDeleteSubmit}
-                                                      /> } />
-                <Route path='/Futures' render={ () => <Futures 
-                                                        futures={futures} 
-                                                      /> } />
-              </Container>
-        </HashRouter>
+        <ThemeProvider theme={theme}>
+          <HashRouter className={classes.root}>
+              <Navbar/>
+                <Container className={classes.content}>
+                  <Route exact path='/' render={ () => <Headliners 
+                                                          headliners={headliners} 
+                                                          handleHeadlinersSubmit={handleHeadlinersSubmit} 
+                                                        /> } />
+                  <Route path='/Stocks' render={ () => <Stocks 
+                                                          stocks={stocks}  
+                                                          handleStocksAddSubmit={handleStocksAddSubmit} 
+                                                          handleStocksDeleteSubmit={handleStocksDeleteSubmit}
+                                                        /> } />
+                  <Route path='/Futures' render={ () => <Futures 
+                                                          futures={futures} 
+                                                        /> } />
+                </Container>
+            </HashRouter>
+          </ThemeProvider>
       </div>
     : <ColorCircularProgress className={classes.loading} />
   );

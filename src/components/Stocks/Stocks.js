@@ -74,10 +74,10 @@ const Stocks = (props) => {
                     Stocks
                 </Typography>
                 <StocksModal handleSubmit={props.handleStocksAddSubmit} />
-                <Grid container spacing={6}>
+                <Grid container spacing={4}>
                     {stockData.map( e => 
                         show[e.pk] ?
-                            <Grid item xs={2} key={e.pk} >
+                            <Grid item xs={4} key={e.pk} >
                                 <Card className={classes.card}>
                                     <CardContent>
                                         <div>

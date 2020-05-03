@@ -47,9 +47,9 @@ const Futures = (props) => {
                 <Typography variant="h2" gutterBottom className={classes.title}>
                     Futures
                 </Typography>
-                <Grid container spacing={6}>
+                <Grid container spacing={4}>
                     {topFutures.map( e => 
-                        <Grid item xs={3} key={e.symbol} >
+                        <Grid item xs={4} key={e.symbol} >
                             <Card className={classes.card}>
                                 <CardContent>
                                     <div className={classes.sameRow}>
@@ -59,7 +59,7 @@ const Futures = (props) => {
                                     </div>
                                     <div>
                                         <Typography variant="h4" >
-                                                {parseFloat(e.price.replace(/,/g, '')).toFixed(3)}
+                                                {parseFloat(e.price.replace(/,/g, '')).toFixed(2)}
                                         </Typography>
                                         <Typography variant="button" className={e.change.charAt(0) === '+' ? classes.changeGain : classes.changeLoss}>
                                                 {e.change} ({e.percentChange})
