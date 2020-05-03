@@ -41,45 +41,45 @@ const Headliners = (props) => {
     if (props.headliners != null) {
         const news = props.headliners.slice();
         headlinersDisplay =
-            <Grid container spacing={3}>
-                { news.map( e => e.values.slice(0, 3).map( v => 
-                        <Grid item xs={6} key={v.title} >
-                            <CardActionArea>
-                                <a href={v.link}>
-                                    <Card className={classes.card}>
-                                        <CardContent>
-                                            <Typography variant="subtitle1" className={classes.typography}>
-                                            {v.title}
-                                            </Typography>
-                                            <div className={classes.pubdate}>
-                                                <Typography variant="body2" className={classes.typography}>
-                                                    {v.pubdate}
-                                                </Typography>
-                                            </div>
-                                            <div className={classes.keyword}>
-                                                <Typography variant="button" className={classes.typography}>
-                                                    {e.keyword}
-                                                </Typography>
-                                            </div>
-                                        </CardContent>
-                                    </Card>
-                                </a>
-                            </CardActionArea>
-                        </Grid>
-                        )
-                    )
-                }
-            </Grid>
-    }
-
-    return(
-        <div>
             <div>
                 <Typography variant="h2" gutterBottom className={classes.typography}>
                     Headliners
                 </Typography>
                 <HeadlinersModal handleSubmit={props.handleHeadlinersSubmit} />
+                <Grid container spacing={6}>
+                    { news.map( e => e.values.slice(0, 3).map( v => 
+                            <Grid item xs={3} key={v.title} >
+                                <CardActionArea>
+                                    <a href={v.link}>
+                                        <Card className={classes.card}>
+                                            <CardContent>
+                                                <Typography variant="subtitle1" className={classes.typography}>
+                                                {v.title}
+                                                </Typography>
+                                                <div className={classes.pubdate}>
+                                                    <Typography variant="body2" className={classes.typography}>
+                                                        {v.pubdate}
+                                                    </Typography>
+                                                </div>
+                                                <div className={classes.keyword}>
+                                                    <Typography variant="button" className={classes.typography}>
+                                                        {e.keyword}
+                                                    </Typography>
+                                                </div>
+                                            </CardContent>
+                                        </Card>
+                                    </a>
+                                </CardActionArea>
+                            </Grid>
+                            )
+                        )
+                    }
+                </Grid>
             </div>
+    }
+
+    return(
+        <div>
             {headlinersDisplay}
         </div>
     )

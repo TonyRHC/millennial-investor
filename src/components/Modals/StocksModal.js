@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -25,7 +24,7 @@ const ColorButton = withStyles(() => ({
     },
 }))(Button);
 
-const HeadlinersModal = (props) => {
+const StocksModal = (props) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [text, setText] = React.useState("")
@@ -55,14 +54,11 @@ const HeadlinersModal = (props) => {
             </ColorButton>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogContent>
-                    <DialogContentText>
-                        Recent news about this headliner will be displayed
-                    </DialogContentText>
                     <TextField
                         autoFocus
                         margin="dense"
                         id="name"
-                        label="Headliner"
+                        label="Stock Ticker"
                         type="text"
                         fullWidth
                         onChange={handleChange}
@@ -81,4 +77,4 @@ const HeadlinersModal = (props) => {
     );
 }
 
-export default HeadlinersModal;
+export default StocksModal;

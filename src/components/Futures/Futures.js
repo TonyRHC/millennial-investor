@@ -41,38 +41,40 @@ const Futures = (props) => {
 
     let futuresDisplay = <ColorLinearProgress variant="query" />
     if (props.futures !== null) {
-        const topFutures = props.futures.slice()
+        const topFutures = props.futures.slice();
         futuresDisplay = 
-            <Grid container spacing={3}>
-                {topFutures.map( e => 
-                    <Grid item xs={3} key={e.symbol} >
-                        <Card className={classes.card}>
-                            <CardContent>
-                                <div className={classes.sameRow}>
-                                    <Typography variant="subtitle2">
-                                        {e.name} {" "} ({e.symbol})
-                                    </Typography>
-                                </div>
-                                <div>
-                                    <Typography variant="h4" >
-                                            {parseFloat(e.price.replace(/,/g, '')).toFixed(3)}
-                                    </Typography>
-                                    <Typography variant="button" className={e.change.charAt(0) === '+' ? classes.changeGain : classes.changeLoss}>
-                                            {e.change} ({e.percentChange})
-                                    </Typography>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                )}
-            </Grid>
+            <div>
+                <Typography variant="h2" gutterBottom className={classes.title}>
+                    Futures
+                </Typography>
+                <Grid container spacing={6}>
+                    {topFutures.map( e => 
+                        <Grid item xs={3} key={e.symbol} >
+                            <Card className={classes.card}>
+                                <CardContent>
+                                    <div className={classes.sameRow}>
+                                        <Typography variant="subtitle2">
+                                            {e.name} {" "} ({e.symbol})
+                                        </Typography>
+                                    </div>
+                                    <div>
+                                        <Typography variant="h4" >
+                                                {parseFloat(e.price.replace(/,/g, '')).toFixed(3)}
+                                        </Typography>
+                                        <Typography variant="button" className={e.change.charAt(0) === '+' ? classes.changeGain : classes.changeLoss}>
+                                                {e.change} ({e.percentChange})
+                                        </Typography>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    )}
+                </Grid>
+            </div>
     }
 
     return (
         <div>
-            <Typography variant="h2" gutterBottom className={classes.title}>
-                Futures
-            </Typography>
             {futuresDisplay}
         </div>
     )
